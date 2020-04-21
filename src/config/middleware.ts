@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 const isDev: boolean = process.env.NODE_ENV === 'development';
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
-export default (app:express.Application) => {
+export default (app: express.Application): void => {
     if (isProd) {
         app.use(compression());
         app.use(helmet());

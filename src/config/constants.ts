@@ -1,8 +1,8 @@
 export type envConfigMode = 'development' | 'test' | 'production';
 
 export interface IConfigMode {
-    MONGO_URL: string,
-    JWT_SECRET: string
+    MONGO_URL: string;
+    JWT_SECRET: string;
 }
 
 const devConfig = {MONGO_URL: 'mongodb://localhost/app-dev', JWT_SECRET: 'SECRET CODE'};
