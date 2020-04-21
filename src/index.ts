@@ -1,5 +1,4 @@
 import * as express from 'express';
-import {Response} from 'express';
 
 const app: express.Application = express();
 const PORT = 3010;
