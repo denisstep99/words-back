@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import {Schema} from "mongoose";
 
 export enum Type {COLLOCATIONS = 'collocations', SYNONYMS = 'synonyms', WORDS = 'words'}
+export const TypeArray = ['collocations', 'synonyms', 'words'];
 
 export interface IExample {
     originalSentence: string;
@@ -40,7 +41,7 @@ const DictionarySchema: Schema = new Schema<IDictionary>({
         type: String,
         required: true,
         trim: true,
-        enum: Type,
+        enum: TypeArray,
     },
     wordList: [{
         type: mongoose.Types.ObjectId,
