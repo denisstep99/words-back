@@ -11,3 +11,12 @@ export async function createDictionary(req: express.Request, res: express.Respon
         return res.status(HTTPStatus.BAD_REQUEST).json(errorPresenter(err));
     }
 }
+
+export async function getDictionariesList(req: express.Request, res: express.Response): Promise<express.Response> {
+    try {
+        const dictionaries = (await Dictionary.find({}));
+        return res.status(HTTPStatus.OK).json(dictionaries);
+    } catch (err) {
+        return res.status(HTTPStatus.BAD_REQUEST).json(errorPresenter(err));
+    }
+}

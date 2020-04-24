@@ -8,7 +8,7 @@ export const TypeArray = ['collocations', 'synonyms', 'words'];
 export interface IDictionary extends mongoose.Document {
     title: string;
     type: Type;
-    wordList: Array<IDictionaryNote>;
+    notesList: Array<IDictionaryNote>;
 }
 
 const DictionarySchema: Schema = new Schema<IDictionary>({
@@ -25,7 +25,7 @@ const DictionarySchema: Schema = new Schema<IDictionary>({
         trim: true,
         enum: TypeArray,
     },
-    wordList: [{
+    notesList: [{
         type: mongoose.Types.ObjectId,
         ref: 'DictionaryNote',
     }]
@@ -36,9 +36,14 @@ DictionarySchema.methods = {
       return {
           title: this.title,
           type: this.type,
-          wordList: this.wordList,
+          notesList: this.notesList,
       }
-  }
+  },
+    _notes: {
+      async addNote(noteId: mongoose.Types.ObjectId) {
+          this.notesList.addToSet(noteId);
+      }
+    }
 };
 
 export default mongoose.model<IDictionary>('Dictionary', DictionarySchema);

@@ -7,5 +7,10 @@ export default {
             title: Joi.string().trim().required().max(50),
             type: Joi.string().trim().required().valid(TypeArray),
         }
+    },
+    getProjectList: {
+        body: {
+            dictionaryId: Joi.string().trim().required(),
+        }
     }
 }
