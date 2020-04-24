@@ -13,7 +13,7 @@ export interface ISynonymExample {
     transcription: string;
 }
 
-export interface IDictionaryNote {
+export interface IDictionaryNote extends mongoose.Document{
     word: string;
     translation: string;
     transcription?: string;
@@ -66,3 +66,5 @@ const DictionaryNoteSchema: Schema = new Schema<IDictionaryNote>({
         },
     }]
 });
+
+export default mongoose.model<IDictionaryNote>('DictionaryNote', DictionaryNoteSchema);
