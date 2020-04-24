@@ -1,27 +1,9 @@
 import * as mongoose from 'mongoose';
 import {Schema} from "mongoose";
+import {IDictionaryNote} from "../dictionaryNote/dictionaryNote.model";
 
 export enum Type {COLLOCATIONS = 'collocations', SYNONYMS = 'synonyms', WORDS = 'words'}
 export const TypeArray = ['collocations', 'synonyms', 'words'];
-
-export interface IExample {
-    originalSentence: string;
-    translatedSentence?: string;
-}
-
-export interface ISynonymExample {
-    word: string;
-    translation: string;
-    transcription: string;
-}
-
-export interface IDictionaryNote {
-    word: string;
-    translation: string;
-    transcription?: string;
-    examples?: Array<IExample>;
-    synonyms?: Array<ISynonymExample>;
-}
 
 export interface IDictionary extends mongoose.Document {
     title: string;
