@@ -4,6 +4,7 @@ export default {
     create: {
         body: {
             word: Joi.string().trim().required(),
+            dictionaryId: Joi.string().trim().required(),
             translation: Joi.string().trim().required(),
             transcription: Joi.string().trim(),
             synonyms: Joi.array().items(

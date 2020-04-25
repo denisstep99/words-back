@@ -9,6 +9,10 @@ export interface IDictionary extends mongoose.Document {
     title: string;
     type: Type;
     notesList: Array<IDictionaryNote>;
+
+    _notes: {
+        addNote(noteId: mongoose.Types.ObjectId): void;
+    };
 }
 
 const DictionarySchema: Schema = new Schema<IDictionary>({
@@ -34,6 +38,7 @@ const DictionarySchema: Schema = new Schema<IDictionary>({
 DictionarySchema.methods = {
   toJSON() {
       return {
+          id: this._id,
           title: this.title,
           type: this.type,
           notesList: this.notesList,
@@ -42,6 +47,7 @@ DictionarySchema.methods = {
     _notes: {
       async addNote(noteId: mongoose.Types.ObjectId) {
           this.notesList.addToSet(noteId);
+          this.save();
       }
     }
 };

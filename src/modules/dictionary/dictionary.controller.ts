@@ -20,3 +20,14 @@ export async function getDictionariesList(req: express.Request, res: express.Res
         return res.status(HTTPStatus.BAD_REQUEST).json(errorPresenter(err));
     }
 }
+
+export async function removeDictionary(req: express.Request, res: express.Response): Promise<express.Response> {
+    try {
+        const dictionary = await Dictionary.findById(req.params.id);
+        await dictionary.remove();
+
+        return res.sendStatus(HTTPStatus.OK);
+    } catch (err) {
+        return res.status(HTTPStatus.BAD_REQUEST).json(errorPresenter(err));
+    }
+}

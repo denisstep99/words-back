@@ -8,6 +8,11 @@ export default {
             type: Joi.string().trim().required().valid(TypeArray),
         }
     },
+    remove: {
+        body: {
+            dictionaryId: Joi.string().trim().required(),
+        }
+    },
     getProjectList: {
         body: {
             dictionaryId: Joi.string().trim().required(),
