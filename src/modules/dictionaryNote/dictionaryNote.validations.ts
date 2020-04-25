@@ -20,5 +20,10 @@ export default {
                 })
             )
         }
+    },
+    getList: {
+        body: {
+            dictionaryId: Joi.string().trim().required(),
+        }
     }
 }

@@ -5,5 +5,6 @@ import * as dictionaryNoteController from './dictionaryNote.controller';
 
 const routes: Router = Router();
 routes.post('/create', validate(dictionaryNoteValidation.create), dictionaryNoteController.createDictionaryNote);
+routes.get('/get-list', validate(dictionaryNoteValidation.getList), dictionaryNoteController.getNotesList);
 
 export default routes;
